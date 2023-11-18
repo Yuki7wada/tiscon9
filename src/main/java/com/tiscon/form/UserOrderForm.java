@@ -52,6 +52,10 @@ public class UserOrderForm {
     @NotBlank
     private String washingMachine;
 
+    @Numeric
+    @NotBlank
+    private String plannedmom;
+
     @NotNull
     private boolean washingMachineInstallation;
 
