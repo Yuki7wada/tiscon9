@@ -159,7 +159,10 @@ public class EstimateController {
         BeanUtils.copyProperties(userOrderForm, dto);
         estimateService.registerOrder(dto);
 
+        return "redirect:/complete";
+    }
+    @GetMapping("complete")
+    String complete(Model model) {
         return "complete";
     }
-
 }
