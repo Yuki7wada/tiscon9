@@ -55,6 +55,9 @@ public class UserOrderForm {
     @NotNull
     private boolean washingMachineInstallation;
 
+    @NotBlank
+    private String plannedmom;
+
     public String getCustomerName() {
         return customerName;
     }
@@ -149,5 +152,13 @@ public class UserOrderForm {
 
     public void setWashingMachineInstallation(boolean washingMachineInstallation) {
         this.washingMachineInstallation = washingMachineInstallation;
+    }
+
+    public String getPlannedmom() {
+        return plannedmom;
+    }
+
+    public void setPlannedmom(String plannedmom) {
+        this.plannedmom = plannedmom;
     }
 }
