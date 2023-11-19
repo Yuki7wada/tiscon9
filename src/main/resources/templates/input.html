@@ -8,6 +8,17 @@
   <link rel="stylesheet" th:href="@{http://fonts.googleapis.com/css?family=Exo:900}"
         href="http://fonts.googleapis.com/css?family=Exo:900"/>
   <link rel="stylesheet" th:href="@{/css/main.css}" href="../static/css/main.css">
+  <style>
+    /* 最初は入力フォームは非表示 */
+    .extraInput {
+      display: none;
+    }
+
+    /* チェックボックスがチェックされた場合、入力フォームを表示する */
+    #toggleCheckbox:checked ~ .extraInput {
+      display: block;
+    }
+    </style>
 </head>
 
 <body>
@@ -38,29 +49,53 @@
           <label for="email">連絡先メールアドレス</label>
           <input type="text" id="email" name="email" th:field="*{email}" class="form-control" value="test@test.com" placeholder="example@tis.ne.jp"/>
         </div>
+
         <div class="sub-title">集荷元・お届け先</div>
+
+
+        <!-- チェックボックス -->
+        <!-- チェックされるとAdressFlagのフラグを立てる -->
+        <input type="checkbox" id="toggleCheckbox"> 
+        <label for="toggleCheckbox">ちゃんと見積もりたい人はチェックを入れてください</label><br/>
+
         <div class="form-group">
           <label for="oldPrefectureId">集荷元住所（都道府県）</label>
           <select id="oldPrefectureId" name="oldPrefectureId" class="form-control">
             <option th:each="prefecture : ${prefectures}" th:value="${prefecture.prefectureId}" th:field="*{oldPrefectureId}">[[${prefecture.prefectureName}]]</option>
           </select>
         </div>
-        <div class="form-group">
+
+        <!-- <div class="form-group">
           <label for="oldAddress">集荷元住所（市区町村以下）</label>
           <input type="text" id="oldAddress" name="oldAddress" th:field="*{oldAddress}"
                  class="form-control" value="新宿区西新宿1-1-1"/>
+        </div> -->
+
+        <div class="extraInput">
+          <label for="oldAddress">集荷元住所（市区町村以下）</label>
+          <input type="text" id="oldAddress" name="oldAddress" th:field="*{oldAddress}"
+                 class="form-control" value="新宿区西新宿1-1-1" />
         </div>
+        
         <div class="form-group">
           <label for="newPrefectureId">お届け先住所（都道府県）</label>
           <select id="newPrefectureId" name="newPrefectureId" class="form-control">
             <option th:each="prefecture : ${prefectures}" th:value="${prefecture.prefectureId}" th:field="*{newPrefectureId}">[[${prefecture.prefectureName}]]</option>
           </select>
         </div>
-        <div class="form-group">
+
+        <!-- <div class="form-group">
+          <label for="newAddress">お届け先住所（市区町村以下）</label>
+          <input type="text" id="newAddress" name="newAddress" th:field="*{newAddress}" class="form-control"
+                 value="札幌市南区1"/>
+        </div> -->
+
+        <div class="extraInput">
           <label for="newAddress">お届け先住所（市区町村以下）</label>
           <input type="text" id="newAddress" name="newAddress" th:field="*{newAddress}" class="form-control"
                  value="札幌市南区1"/>
         </div>
+
       </fieldset>
       <fieldset>
       <div class="sub-title">お荷物情報</div>

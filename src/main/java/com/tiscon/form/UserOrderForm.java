@@ -91,24 +91,42 @@ public class UserOrderForm {
         return oldAddress;
     }
 
+    // public void setOldAddress(String oldAddress) {
+    //     this.oldAddress = oldAddress;
+    // }
+
     public void setOldAddress(String oldAddress) {
-        this.oldAddress = oldAddress;
+        if (oldAddress.length() == 0) {
+            this.oldAddress = "希望しない";
+        } else {
+            this.oldAddress = oldAddress;
+        }
     }
+    
 
     public String getNewPrefectureId() {
         return newPrefectureId;
     }
 
+    // public void setNewPrefectureId(String newPrefectureId) {
+    //     this.newPrefectureId = newPrefectureId;
+    // }
+
     public void setNewPrefectureId(String newPrefectureId) {
         this.newPrefectureId = newPrefectureId;
     }
-
+    
     public String getNewAddress() {
         return newAddress;
     }
 
     public void setNewAddress(String newAddress) {
-        this.newAddress = newAddress;
+        if (newAddress.length() == 0) {
+            this.newAddress = "希望しない";
+        } else {
+            this.newAddress = newAddress;
+        }
+        // this.newAddress = newAddress;
     }
 
     public String getBox() {
