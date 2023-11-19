@@ -32,20 +32,16 @@
 
     <div class="col-sm-12">
       <div class="sub-title">お客様情報</div>
-
-      <!-- エラー処理 -->
-      <ul>
-        <th:block  th:if="${#fields.hasErrors('tel')}">
-          <font color = "red"><li><span class="error-message" th:each="err : ${#fields.errors('tel')}" th:text="${err}"></span></li></font>
-        </th:block >
-
-        <th:block  th:if="${#fields.hasErrors('email')}">
-          <font color = "red"><li><span class="error-message" th:each="err : ${#fields.errors('email')}" th:text="${err}"></span></li></font>
-        </th:block >
-      </ul>
-
-      <br/>
-
+      <th:block  th:if="${#fields.hasErrors('customerName')}">
+            <span class="error-message" th:each="err : ${#fields.errors('customerName')}" th:text="${err}"></span>
+          </th:block >
+          <th:block  th:if="${#fields.hasErrors('tel')}">
+            <span class="error-message" th:each="err : ${#fields.errors('tel')}" th:text="${err}"></span>
+          </th:block >
+          <br>
+          <th:block  th:if="${#fields.hasErrors('email')}">
+            <span class="error-message" th:each="err : ${#fields.errors('email')}" th:text="${err}"></span>
+          </th:block >
       <table class="table table-bordered">
         <col span="1" style="background-color: #FFFFFF;">
         <col span="2" style="background-color: #FFFFFF;">
@@ -105,7 +101,15 @@
     </div>
     <div class="col-sm-12">
       <div class="sub-title">お荷物情報</div>
-
+      <th:block  th:if="${#fields.hasErrors('box')}">
+            <span class="error-message" th:each="err : ${#fields.errors('box')}" th:text="${err}"></span>
+          </th:block >
+          <th:block  th:if="${#fields.hasErrors('bed')}">
+            <span class="error-message" th:each="err : ${#fields.errors('bed')}" th:text="${err}"></span>
+          </th:block >  
+          <th:block  th:if="${#fields.hasErrors('bicycle')}">
+            <span class="error-message" th:each="err : ${#fields.errors('bicycle')}" th:text="${err}"></span>
+          </th:block >    
         <table class="table table-bordered">
           <col span="1" style="background-color: #FFFFFF;">
           <col span="2" style="background-color: #FFFFFF;">
