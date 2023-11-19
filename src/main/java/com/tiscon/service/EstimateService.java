@@ -60,6 +60,7 @@ public class EstimateService {
         packageList.add(new CustomerPackage(customer.getCustomerId(), PackageType.BED.getCode(), dto.getBed()));
         packageList.add(new CustomerPackage(customer.getCustomerId(), PackageType.BICYCLE.getCode(), dto.getBicycle()));
         packageList.add(new CustomerPackage(customer.getCustomerId(), PackageType.WASHING_MACHINE.getCode(), dto.getWashingMachine()));
+
         estimateDAO.batchInsertCustomerPackage(packageList);
     }
 
@@ -88,11 +89,16 @@ public class EstimateService {
         // オプションサービスの料金を算出する。
         int priceForOptionalService = 0;
 
+        //季節係数を算出する。
+        double seasonNum = Double.parseDouble(dto.getPlannedmom());
+
         if (dto.getWashingMachineInstallation()) {
             priceForOptionalService = estimateDAO.getPricePerOptionalService(OptionalServiceType.WASHING_MACHINE.getCode());
         }
 
-        return priceForDistance + pricePerTruck + priceForOptionalService;
+        int priceint = (int) Math.floor(seasonNum * (priceForDistance + pricePerTruck ) + priceForOptionalService)  ;
+
+        return priceint;
     }
 
     /**
