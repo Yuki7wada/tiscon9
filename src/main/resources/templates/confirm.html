@@ -25,11 +25,23 @@
       入力内容をご確認ください。<br/>
       この内容でお見積りする場合は、「概算お見積もりをする」ボタンを押してください。
     </div>
-    <ul th:if="${#fields.hasErrors('all')}">
-      <li th:each="err : ${#fields.errors('all')}" th:text="${err}"></li>
-    </ul>
+
+    <!-- <ul th:if="${#fields.hasErrors('all')}">
+      <font color = "red"><li th:each="err : ${#fields.errors('all')}" th:text="${err}"></li></font> 
+    </ul> -->
+
     <div class="col-sm-12">
       <div class="sub-title">お客様情報</div>
+      <th:block  th:if="${#fields.hasErrors('customerName')}">
+            <span class="error-message" th:each="err : ${#fields.errors('customerName')}" th:text="${err}"></span>
+          </th:block >
+          <th:block  th:if="${#fields.hasErrors('tel')}">
+            <span class="error-message" th:each="err : ${#fields.errors('tel')}" th:text="${err}"></span>
+          </th:block >
+          <br>
+          <th:block  th:if="${#fields.hasErrors('email')}">
+            <span class="error-message" th:each="err : ${#fields.errors('email')}" th:text="${err}"></span>
+          </th:block >
       <table class="table table-bordered">
         <col span="1" style="background-color: #FFFFFF;">
         <col span="2" style="background-color: #FFFFFF;">
@@ -89,6 +101,15 @@
     </div>
     <div class="col-sm-12">
       <div class="sub-title">お荷物情報</div>
+      <th:block  th:if="${#fields.hasErrors('box')}">
+            <span class="error-message" th:each="err : ${#fields.errors('box')}" th:text="${err}"></span>
+          </th:block >
+          <th:block  th:if="${#fields.hasErrors('bed')}">
+            <span class="error-message" th:each="err : ${#fields.errors('bed')}" th:text="${err}"></span>
+          </th:block >  
+          <th:block  th:if="${#fields.hasErrors('bicycle')}">
+            <span class="error-message" th:each="err : ${#fields.errors('bicycle')}" th:text="${err}"></span>
+          </th:block >    
         <table class="table table-bordered">
           <col span="1" style="background-color: #FFFFFF;">
           <col span="2" style="background-color: #FFFFFF;">
@@ -98,6 +119,7 @@
             <td><span th:text="*{box}"></span></td>
             <input type="hidden" name="box" id="box" th:value="*{box}"/>
           </tr>
+
           <tr>
             <th>ベッドの個数</th>
             <td><span th:text="*{bed}"></span></td>
