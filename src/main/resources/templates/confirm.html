@@ -25,6 +25,11 @@
       入力内容をご確認ください。<br/>
       この内容でお見積りする場合は、「概算お見積もりをする」ボタンを押してください。
     </div>
+
+    <!-- <ul th:if="${#fields.hasErrors('all')}">
+      <font color = "red"><li th:each="err : ${#fields.errors('all')}" th:text="${err}"></li></font> 
+    </ul> -->
+
     <div class="col-sm-12">
       <div class="sub-title">お客様情報</div>
       <th:block  th:if="${#fields.hasErrors('customerName')}">
@@ -114,6 +119,7 @@
             <td><span th:text="*{box}"></span></td>
             <input type="hidden" name="box" id="box" th:value="*{box}"/>
           </tr>
+
           <tr>
             <th>ベッドの個数</th>
             <td><span th:text="*{bed}"></span></td>
